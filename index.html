@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!-- iDom -->
-<html lang="en" data-headlessui-focus-visible="">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -14,287 +13,214 @@
     <!-- Favicon -->
     <link rel="icon" href="./wordmark.svg" type="image/svg+xml">
     <link rel="alternate icon" href="./detective.png" type="image/png">
-    <meta name="description"
-        content="Bloxlink is the world's largest Roblox bot for Discord. Bloxlink allows users to verify, get roles, and more.">
-    <meta name="keywords"
-        content="discord bot,roblox bot,discord,discord roblox bot,roblox discord bot,bot roblox,roblox verification,groups,verification,verify,blox,link,bloxlink">
-    <link rel="canonical" href="./">
-    <meta property="og:title" content="Bloxlink Roblox Bot | Roblox Bot">
-    <meta property="og:description"
-        content="Bloxlink is the largest Roblox bot for Discord. Bloxlink allows users to verify, get roles, and more..">
-    <meta property="og:url" content="./">
-    <meta property="og:image" content="./bloxlink-million-servers.png">
-    <meta property="og:image:width" content="1920">
-    <meta property="og:image:height" content="1080">
-    <meta property="og:image:alt" content="BloxlinkCity">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Bloxlink Roblox Bot">
-    <meta name="twitter:description"
-        content="Bloxlink is the most largest Roblox bot on Discord. Bloxlink allows users to verify, get roles, and more..">
-    <meta name="twitter:image" content="./bloxlink-million-servers.png">
-    <meta name="twitter:image:width" content="1920">
-    <meta name="twitter:image:height" content="1080">
-    <meta name="twitter:image:alt" content="BloxlinkCity">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/nord.min.css" rel="stylesheet">
     <style>
-        /* Aynı animasyonlar ve modal stilleri */
-        @keyframes slideInUp {
-            from { transform: translateY(100px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .modal-enter { animation: fadeIn 0.3s ease-out; }
-        .modal-content-enter { animation: slideInUp 0.3s ease-out; }
-        @keyframes pulse {
-            0%, 100% { border-color: #ef4444; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-            50% { border-color: #ef4444; box-shadow: 0 0 0 4px rgba(239, 68, 68, 0); }
-        }
-        .animate-pulse { animation: pulse 1s ease-in-out; }
-        .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 300ms; }
-        #modalContent { height: 600px; }
-        @media (max-width: 768px) {
-            #modalContent { height: calc(100vh - 1rem) !important; max-height: none !important; margin: 0.5rem !important; }
-            #verificationFrame { width: 100% !important; -webkit-transform: translateZ(0); transform: translateZ(0); }
-        }
-        @media (min-width: 769px) {
-            #modalContent { width: 1200px !important; height: 675px !important; max-width: 90vw !important; max-height: 80vh !important; }
-            #verificationFrame { width: calc(100% + 17px) !important; }
-        }
-        @media (min-width: 1200px) {
-            #modalContent { width: 1400px !important; height: 787px !important; max-width: 85vw !important; max-height: 85vh !important; }
-        }
-        @media (orientation: landscape) and (max-height: 600px) {
-            #modalContent { height: calc(100vh - 1rem) !important; max-height: none !important; }
-        }
-        #verificationFrame { background-color: white !important; }
-
-        /* verify sayfası özel stiller */
-        .verify-box {
-            background: rgba(31, 41, 55, 0.7);
-            backdrop-filter: blur(8px);
-            border: 1px solid #374151;
-            padding: 2.5rem 2rem;
-            border-radius: 1rem;
-            max-width: 600px;
-            width: 100%;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .verify-box .server-id {
-            background: #111827;
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #60a5fa;
-            margin: 1.5rem 0;
-            word-break: break-all;
-            border: 1px solid #374151;
-        }
-        .verify-box .btn {
-            display: inline-block;
-            background: #10b981;
-            color: white;
-            font-weight: 600;
-            padding: 0.75rem 2.5rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            transition: background 0.2s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        .verify-box .btn:hover { background: #059669; }
-        .verify-box .back-link {
-            display: block;
-            margin-top: 1.5rem;
-            color: #6b7280;
-            text-decoration: none;
-            font-size: 0.875rem;
-        }
-        .verify-box .back-link:hover { color: #d1d5db; }
-        .verify-hidden { display: none !important; }
+        /* TEMEL STILLER */
+        *{box-sizing:border-box;border:0 solid #e5e7eb}html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif}body{margin:0;line-height:inherit;background-color:#111827;font-family:'Poppins',sans-serif;color-scheme:dark}
+        .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
+        .flex{display:flex}.grid{display:grid}.hidden{display:none}.relative{position:relative}.absolute{position:absolute}.fixed{position:fixed}.inset-0{inset:0}.z-10{z-index:10}.z-50{z-index:50}.z-\[61\]{z-index:61}
+        .max-w-7xl{max-width:80rem}.mx-auto{margin-left:auto;margin-right:auto}.px-4{padding-left:1rem;padding-right:1rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-32{padding-top:8rem;padding-bottom:8rem}.gap-2{gap:.5rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.items-center{align-items:center}.justify-between{justify-content:space-between}.justify-center{justify-content:center}.flex-1{flex:1 1 0%}.w-full{width:100%}.w-1\/2{width:50%}.h-10{height:2.5rem}.h-6{width:1.5rem;height:1.5rem}.h-\[960px\]{height:960px}.text-white{color:#fff}.text-gray-300{color:#d1d5db}.text-sm{font-size:.875rem;line-height:1.25rem}.text-base{font-size:1rem;line-height:1.5rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-6xl{font-size:3.75rem;line-height:1}.font-normal{font-weight:400}.font-extrabold{font-weight:800}.text-left{text-align:left}.border-b{border-bottom-width:1px}.border-tertiary-background{border-color:#293341}.bg-secondary-background{background-color:#1f2937}.bg-indigo-400\/10{background-color:rgba(129,140,248,.1)}.bg-green-500{background-color:#10b981}.hover\:bg-green-600:hover{background-color:#059669}.bg-gradient-to-r{background-image:linear-gradient(to right,var(--tw-gradient-stops))}.from-red-900{--tw-gradient-from:#7f1d1d;--tw-gradient-to:rgba(127,29,29,0);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.to-red-600{--tw-gradient-to:#dc2626}.rounded-md{border-radius:.375rem}.rounded-lg{border-radius:.5rem}.px-3{padding-left:.75rem;padding-right:.75rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.no-underline{text-decoration:none}.mb-1{margin-bottom:.25rem}.mt-2{margin-top:.5rem}.my-16{margin-top:4rem;margin-bottom:4rem}.my-4{margin-top:1rem;margin-bottom:1rem}.mb-10{margin-bottom:2.5rem}.space-x-44>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(11rem * var(--tw-space-x-reverse));margin-left:calc(11rem * calc(1 - var(--tw-space-x-reverse)))}.invisible{visibility:hidden}.visible{visibility:visible}.cursor-pointer{cursor:pointer}.divide-y>:not([hidden])~:not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px * var(--tw-divide-y-reverse))}.divide-tertiary-background>:not([hidden])~:not([hidden]){border-color:#293341}.w-48{width:12rem}.right-0{right:0}.mt-2{margin-top:.5rem}.hover\:bg-tertiary-background:hover{background-color:#293341}.rounded-t-md{border-top-left-radius:.375rem;border-top-right-radius:.375rem}.rounded-b-md{border-bottom-left-radius:.375rem;border-bottom-right-radius:.375rem}.text-primary-text{color:#fff}.text-secondary-text{color:#9ca3af}.text-danger{color:#e33f3f}.text-link{color:#6295ff}.text-\[\#5865f2\]{color:#5865f2}.bg-tertiary-background{background-color:#293341}.placeholder\:text-gray-400::placeholder{color:#9ca3af}.focus\:border-indigo-600:focus{border-color:#4f46e5}.focus\:ring-0:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.outline-none{outline:2px solid transparent;outline-offset:2px}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.border{border-width:1px}.border-tertiary-background{border-color:#293341}.text-sm{padding:.5rem .75rem}.w-full{width:100%}.block{display:block}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.gap-6{gap:1.5rem}.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.lg\:gap-14{gap:3.5rem}.lg\:mt-16{margin-top:4rem}.h-12{height:3rem}.w-12{width:3rem}.bg-white\/10{background-color:hsla(0,0%,100%,.1)}.text-red-200{color:#fecaca}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.font-medium{font-weight:500}.font-bold{font-weight:700}.text-brand{color:#cf4949}.opacity-25{opacity:.25}.object-cover{-o-object-fit:cover;object-fit:cover}.p-16{padding:4rem}.py-8{padding-top:2rem;padding-bottom:2rem}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}.gap-8{gap:2rem}.md\:gap-0{gap:0}.hover\:text-gray-300:hover{color:#d1d5db}.border-t{border-top-width:1px}.border-t-tertiary-background{border-top-color:#293341}.border-b-tertiary-background{border-bottom-color:#293341}.xl\:block{display:block}.xl\:hidden{display:none}.xl\:px-0{padding-left:0;padding-right:0}.xl\:min-h-screen{min-height:100vh}.xl\:w-1\/2{width:50%}.md\:flex{display:flex}.md\:hidden{display:none}.md\:px-0{padding-left:0;padding-right:0}.md\:gap-0{gap:0}.md\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+        .backdrop-blur-sm{--tw-backdrop-blur:blur(4px);backdrop-filter:blur(4px)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.3s}.scale-95{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.scale-100{--tw-scale-x:1;--tw-scale-y:1;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.opacity-0{opacity:0}.opacity-100{opacity:1}
+        .verify-box{background:rgba(31,41,55,.7);backdrop-filter:blur(8px);border:1px solid #374151;padding:2.5rem 2rem;border-radius:1rem;max-width:600px;width:100%;text-align:center;margin:0 auto}.verify-box .server-id{background:#111827;padding:.75rem 1rem;border-radius:.5rem;font-size:1.1rem;font-weight:500;color:#60a5fa;margin:1.5rem 0;word-break:break-all;border:1px solid #374151}.verify-box .btn{display:inline-block;background:#10b981;color:#fff;font-weight:600;padding:.75rem 2.5rem;border-radius:.5rem;text-decoration:none;transition:background .2s;border:none;cursor:pointer;font-size:1rem}.verify-box .btn:hover{background:#059669}.verify-box .back-link{display:block;margin-top:1.5rem;color:#6b7280;text-decoration:none;font-size:.875rem}.verify-box .back-link:hover{color:#d1d5db}
+        @keyframes slideInUp{from{transform:translateY(100px);opacity:0}to{transform:translateY(0);opacity:1}}@keyframes fadeIn{from{opacity:0}to{opacity:1}}.modal-enter{animation:fadeIn .3s ease-out}.modal-content-enter{animation:slideInUp .3s ease-out}
+        @media (min-width:768px){.md\:flex{display:flex}.md\:hidden{display:none}}
+        @media (min-width:1024px){.lg\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+        @media (min-width:1280px){.xl\:block{display:block}.xl\:px-0{padding-left:0;padding-right:0}}
     </style>
 </head>
-
 <body>
-    <div class="h-screen overflow-y-auto">
-        <div class="min-h-screen">
-            <!-- Navbar (Aynı) -->
-            <nav id="main-navbar" class="py-4 border-b-tertiary-background border-b">
-                <div class="max-w-7xl flex items-center mx-auto px-4 gap-4 md:px-0">
-                    <div class="flex items-center justify-between flex-1">
-                        <div class="flex gap-6 items-center">
-                            <a class="mb-1" href="./">
-                                <span class="sr-only">Bloxlink</span>
-                                <img src="./wordmark.svg" alt="Bloxlink" class="h-10">
-                            </a>
-                            <div class="flex gap-6 hidden md:flex">
-                                <a href="./"><p class="text-base font-normal text-primary-text text-left">Features</p></a>
-                                <a href="./"><p class="text-base font-normal text-primary-text text-left">Commands</p></a>
-                                <a href="./"><p class="text-base font-normal text-primary-text text-left">Pricing</p></a>
-                                <a href="./"><p class="text-base font-normal text-primary-text text-left">Support</p></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="relative z-[61]">
-                        <div class="grid place-items-center h-10 w-10 rounded-md md:hidden cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-6 h-6 text-white ">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-                            </svg>
-                        </div>
-                        <div class="z-10 absolute right-0 mt-2 bg-secondary-background divide-y divide-tertiary-background rounded-md w-48 invisible">
-                            <a class="flex text-white bg-secondary-background hover:bg-tertiary-background px-4 py-3 cursor-pointer rounded-t-md" href="./"><div class="items-center flex justify-between w-full"><p class="text-sm font-normal text-primary-text text-left">Features</p></div></a>
-                            <a class="flex text-white bg-secondary-background hover:bg-tertiary-background px-4 py-3 cursor-pointer" href="./"><div class="items-center flex justify-between w-full"><p class="text-sm font-normal text-primary-text text-left">Commands</p></div></a>
-                            <a class="flex text-white bg-secondary-background hover:bg-tertiary-background px-4 py-3 cursor-pointer" href="./"><div class="items-center flex justify-between w-full"><p class="text-sm font-normal text-primary-text text-left">Pricing</p></div></a>
-                            <a class="flex text-white bg-secondary-background hover:bg-tertiary-background px-4 py-3 cursor-pointer rounded-b-md" href="./"><div class="items-center flex justify-between w-full"><p class="text-sm font-normal text-primary-text text-left">Support</p></div></a>
+<div class="h-screen overflow-y-auto">
+    <div class="min-h-screen">
+
+        <!-- NAVBAR -->
+        <nav class="py-4 border-b border-tertiary-background">
+            <div class="max-w-7xl flex items-center mx-auto px-4 gap-4 md:px-0">
+                <div class="flex items-center justify-between flex-1">
+                    <div class="flex gap-6 items-center">
+                        <a class="mb-1" href="./">
+                            <span class="sr-only">Bloxlink</span>
+                            <img src="./wordmark.svg" alt="Bloxlink" class="h-10">
+                        </a>
+                        <div class="flex gap-6 hidden md:flex">
+                            <a href="./"><p class="text-base font-normal text-primary-text">Features</p></a>
+                            <a href="./"><p class="text-base font-normal text-primary-text">Commands</p></a>
+                            <a href="./"><p class="text-base font-normal text-primary-text">Pricing</p></a>
+                            <a href="./"><p class="text-base font-normal text-primary-text">Support</p></a>
                         </div>
                     </div>
                 </div>
-            </nav>
-
-            <!-- Banner (Aynı) -->
-            <div id="banner" class="rounded-md px-3 py-2 flex items-center gap-2 bg-indigo-400/10 justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-6 h-6 text-white">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"></path>
-                </svg>
-                <p class="text-sm text-gray-300">
-                    We've updated our Terms of Service, Privacy Policy, and Purchase Policy effective February 10, 2026.
-                </p>
-            </div>
-
-            <!-- ========== ANA SAYFA İÇERİĞİ ========== -->
-            <div id="homeContent">
-                <div class="my-4">
-                    <div class="flex flex-col gap-2">
-                        <div class="max-w-7xl mx-auto px-4 xl:px-0 xl:min-h-screen py-32 xl:py-0">
-                            <div class="flex gap-2 items-center space-x-44">
-                                <div class="flex flex-col gap-6 w-full xl:w-1/2">
-                                    <div>
-                                        <h1 class="text-6xl font-extrabold text-primary-text text-left" weight="extraBold">Bloxlink</h1>
-                                        <p class="text-4xl font-extrabold text-primary-text text-left inline" weight="extraBold">Bringing </p>
-                                        <p class="text-4xl font-extrabold text-danger text-left inline" color="danger" weight="extraBold">Roblox </p>
-                                        <p class="text-4xl font-extrabold text-primary-text text-left inline" weight="extraBold">to </p>
-                                        <p class="text-4xl font-extrabold text-[#5865f2] text-left inline" color="discord" weight="extraBold">Discord</p>
-                                    </div>
-                                    <p class="text-lg font-normal text-secondary-text text-left" color="secondary">Connect Roblox to Discord using Bloxlink, the leading Roblox Discord Bot. Verify who you really are, sync your group to your server, and more.</p>
-                                    <div class="flex gap-2 w-full items-center">
-                                        <div class="flex-1">
-                                            <input id="username" class="block shadow-sm border focus:ring-0 rounded-md outline-none bg-tertiary-background text-gray-200 placeholder:text-gray-400 focus:border-indigo-600 border-tertiary-background text-sm px-4 py-2 w-full" placeholder="Enter your Roblox username" variant="tertiary" value="">
-                                        </div>
-                                        <a href="/?server=4839119973277302" id="verify" variant="success" class="transition-colors rounded-md flex items-center justify-center opacity-100 bg-green-500 hover:bg-green-600 text-white py-2 px-3 font-medium text-sm no-underline">
-                                            <div class="flex items-center">Get Verified Now</div>
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm font-normal text-secondary-text text-left inline" color="secondary">By continuing, you agree to our </p>
-                                        <a class="text-white text-sm" href="https://www.iubenda.com/terms-and-conditions/11935974">terms of service</a>
-                                        <p class="text-sm font-normal text-secondary-text text-left inline" color="secondary">and </p>
-                                        <a class="text-white text-sm" href="https://www.iubenda.com/privacy-policy/11935974">privacy policy.</a>
-                                    </div>
-                                    <div class="flex gap-2 items-center divide-x divide-tertiary-text">
-                                        <div class="flex pr-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-5 w-5 text-yellow-400"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"></path></svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-5 w-5 text-yellow-400"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"></path></svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-5 w-5 text-yellow-400"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"></path></svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-5 w-5 text-yellow-400"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"></path></svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-5 w-5 text-yellow-400"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"></path></svg>
-                                        </div>
-                                        <div class="pl-4">
-                                            <p class="text-sm font-normal text-primary-text text-left inline" color="primary">Top rated Roblox bot </p>
-                                            <p class="text-sm font-normal text-secondary-text text-left inline" color="secondary">by </p>
-                                            <p class="text-sm font-normal text-danger text-left inline" color="danger">thousands of users</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <img src="./hero.svg" class="w-1/2 h-[960px] xl:block hidden" alt="Bloxlink brings Roblox to Discord">
-                            </div>
-                        </div>
-                        <!-- Özellikler, metrics, footer vs. (Aynı, kısaltmak için burada bırakıyorum) -->
-                        <div class="bg-gradient-to-r from-red-900 to-red-600 mb-10">
-                            <!-- ... özellik kartları ... -->
-                        </div>
-                        <div class="p-16">
-                            <!-- ... metrics ... -->
-                        </div>
+                <div class="relative z-[61]">
+                    <div class="grid place-items-center h-10 w-10 rounded-md md:hidden cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path></svg>
+                    </div>
+                    <div class="z-10 absolute right-0 mt-2 bg-secondary-background divide-y divide-tertiary-background rounded-md w-48 invisible">
+                        <a class="flex text-white bg-secondary-background hover:bg-tertiary-background px-4 py-3 rounded-t-md" href="./"><p class="text-sm font-normal text-primary-text">Features</p></a>
+                        <a class="flex text-white bg-secondary-background hover:bg-tertiary-background px-4 py-3" href="./"><p class="text-sm font-normal text-primary-text">Commands</p></a>
+                        <a class="flex text-white bg-secondary-background hover:bg-tertiary-background px-4 py-3" href="./"><p class="text-sm font-normal text-primary-text">Pricing</p></a>
+                        <a class="flex text-white bg-secondary-background hover:bg-tertiary-background px-4 py-3 rounded-b-md" href="./"><p class="text-sm font-normal text-primary-text">Support</p></a>
                     </div>
                 </div>
             </div>
+        </nav>
 
-            <!-- ========== DOĞRULAMA SAYFASI İÇERİĞİ (Gizli) ========== -->
-            <div id="verifyContent" class="verify-hidden">
-                <div class="my-4">
-                    <div class="flex flex-col gap-2">
-                        <div class="max-w-7xl mx-auto px-4 xl:px-0 xl:min-h-screen py-32 xl:py-0 flex items-center justify-center">
-                            <div class="verify-box">
-                                <img src="./wordmark.svg" alt="Bloxlink" style="height:48px; margin:0 auto 1.5rem auto;">
-                                <h1 class="text-3xl font-extrabold text-primary-text">Verify Your Account</h1>
-                                <p class="text-secondary-text mt-2">You are about to verify for the following Discord server:</p>
-                                <div class="server-id" id="serverDisplay">Loading server ID...</div>
-                                <p class="text-secondary-text mt-2">Click the button below to continue with verification.</p>
-                                <a href="#" id="continueVerifyBtn" class="btn">Continue Verification</a>
-                                <a href="./" class="back-link">← Go back to home</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Footer (Aynı) -->
-            <footer class="border-t-tertiary-background border-t">
-                <div class="max-w-7xl mx-auto py-8 px-4">
-                    <!-- ... footer içeriği ... (kısaltmak için eklemiyorum, sen mevcut footer'ı kullan) -->
-                </div>
-            </footer>
+        <!-- BANNER -->
+        <div class="rounded-md px-3 py-2 flex items-center gap-2 bg-indigo-400/10 justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"></path></svg>
+            <p class="text-sm text-gray-300">We've updated our Terms of Service, Privacy Policy, and Purchase Policy effective February 10, 2026.</p>
         </div>
-    </div>
 
-    <script src="./bloxlink.js"></script>
+        <!-- HERO / VERIFY SECTION (Dinamik) -->
+        <div class="my-4">
+            <div class="flex flex-col gap-2">
+                <div id="hero-section" class="max-w-7xl mx-auto px-4 xl:px-0 xl:min-h-screen py-32 xl:py-0">
+                    <!-- İçerik JavaScript tarafından doldurulacak -->
+                </div>
 
-    <!-- Modal (iframe) -->
-    <div id="verificationModal" class="fixed inset-0 flex items-center justify-center z-50 hidden backdrop-blur-sm p-1 sm:p-4" style="background-color: rgba(0, 0, 0, 0.3);">
-        <div id="modalContent" class="bg-secondary-background rounded-lg shadow-xl w-full max-w-[calc(100vw-8px)] sm:max-w-[90vw] lg:max-w-4xl overflow-hidden transform scale-95 opacity-0 transition-all duration-300 ease-out flex flex-col">
-            <div class="flex justify-between items-center p-3 sm:p-4 border-b border-tertiary-background flex-shrink-0">
-                <h3 class="text-base sm:text-lg font-semibold text-primary-text">Verify Your Account</h3>
-                <button id="closeModal" class="text-secondary-text hover:text-primary-text transition-colors p-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 sm:w-6 sm:h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            <div class="flex-1 relative overflow-hidden rounded-b-lg">
-                <iframe id="verificationFrame" src="" class="w-full h-full border-0 absolute inset-0 bg-white" allow="fullscreen; autoplay; encrypted-media; picture-in-picture" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" referrerpolicy="no-referrer"></iframe>
+                <!-- ÖZELLİKLER -->
+                <div class="bg-gradient-to-r from-red-900 to-red-600 mb-10">
+                    <div class="flex flex-col gap-8 max-w-7xl mx-auto px-4 xl:px-0 my-16">
+                        <div class="flex flex-col gap-2">
+                            <p class="text-3xl font-extrabold text-primary-text">No complex setup or documentation needed</p>
+                            <p class="text-lg font-normal text-primary-text max-w-3xl">Bloxlink appeals to the average user and the advanced user. Setup Bloxlink how you want to, enable new features with the click of a button, seamlessly.</p>
+                        </div>
+                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-14">
+                            <!-- Kartlar -->
+                            <div class="flex flex-col gap-6"><span class="flex items-center justify-center h-12 w-12 rounded-md bg-white/10"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859m-19.5.338V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H6.911a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661z"></path></svg></span><div><p class="text-lg font-medium text-primary-text">Simple Verification</p><p class="text-base text-red-200">With the ability to verify through our Roblox game or by a code on your profile.</p></div></div>
+                            <div class="flex flex-col gap-6"><span class="flex items-center justify-center h-12 w-12 rounded-md bg-white/10"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"></path></svg></span><div><p class="text-lg font-medium text-primary-text">Binds</p><p class="text-base text-red-200">Connect almost anything on Roblox to a Discord role.</p></div></div>
+                            <div class="flex flex-col gap-6"><span class="flex items-center justify-center h-12 w-12 rounded-md bg-white/10"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"></path></svg></span><div><p class="text-lg font-medium text-primary-text">Server Restrictions</p><p class="text-base text-red-200">Lock your server with age-limits and group-only restrictions.</p></div></div>
+                            <div class="flex flex-col gap-6"><span class="flex items-center justify-center h-12 w-12 rounded-md bg-white/10"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path></svg></span><div><p class="text-lg font-medium text-primary-text">Group Utility</p><p class="text-base text-red-200">Provides a variety of group features for your specific style.</p></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- METRICS -->
+                <div class="p-16">
+                    <div class="flex gap-2 max-w-7xl mx-auto">
+                        <div class="flex flex-col gap-6 w-full xl:w-1/2 px-4 xl:px-0">
+                            <p class="text-base font-bold text-brand">THE METRICS</p>
+                            <p class="text-3xl font-extrabold text-primary-text">We're the most trusted Roblox bot for Discord</p>
+                            <p class="text-lg font-normal text-secondary-text">Bloxlink has been around for over six years. Our track record of delivering successful products speaks for itself.</p>
+                            <div class="grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2">
+                                <div><p class="text-2xl font-bold text-primary-text">1M+</p><p class="text-base text-secondary-text">Discord Servers use Bloxlink.</p></div>
+                                <div><p class="text-2xl font-bold text-primary-text">88M+</p><p class="text-base text-secondary-text">Players around the globe use Bloxlink.</p></div>
+                                <div><p class="text-2xl font-bold text-primary-text">99%</p><p class="text-base text-secondary-text">Uptime record provides uninterrupted usage.</p></div>
+                                <div><p class="text-2xl font-bold text-primary-text">30+</p><p class="text-base text-secondary-text">Available bot commands for your server.</p></div>
+                            </div>
+                        </div>
+                        <div class="w-1/2 relative hidden xl:block">
+                            <img class="h-full w-auto object-cover opacity-25 absolute" src="./detective.png" alt="BloxLink detective">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <script>
-        // URL parametrelerini kontrol et, server varsa doğrulama içeriğini göster
-        (function() {
-            const params = new URLSearchParams(window.location.search);
-            const serverId = params.get('server');
-            if (serverId) {
-                // Ana sayfa içeriğini gizle, doğrulama içeriğini göster
-                document.getElementById('homeContent').classList.add('verify-hidden');
-                document.getElementById('verifyContent').classList.remove('verify-hidden');
-                // Server ID'yi göster
-                document.getElementById('serverDisplay').textContent = 'Server ID: ' + serverId;
-                // "Continue Verification" butonuna tıklanınca yapılacak işlem
-                document.getElementById('continueVerifyBtn').addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // ★★★ Buraya kendi doğrulama linkini veya işlemini koy ★★★
-                    // Örnek: window.location.href = 'https://bloxlink.com/verify';
-                    alert('Doğrulama işlemi burada başlayacak. (Demo)');
-                });
-            }
-        })();
-    </script>
+    <!-- FOOTER -->
+    <footer class="border-t border-tertiary-background">
+        <div class="max-w-7xl mx-auto py-8 px-4">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 md:gap-0">
+                <div><p class="font-bold text-secondary-text">BLOXLINK</p><a class="block text-white hover:text-gray-300" href="./">Add to server</a><a class="block text-white hover:text-gray-300" href="./">Commands</a></div>
+                <div><p class="font-bold text-secondary-text">SOLUTIONS</p><a class="block text-white hover:text-gray-300" href="./">Verify members</a><a class="block text-white hover:text-gray-300" href="./">Bind roles</a></div>
+                <div><p class="font-bold text-secondary-text">SERVERS</p><a class="block text-white hover:text-gray-300" href="./">Roblox Games</a><a class="block text-white hover:text-gray-300" href="./">Military</a></div>
+                <div><p class="font-bold text-secondary-text">RESOURCES</p><a class="block text-white hover:text-gray-300" href="./">Support</a><a class="block text-white hover:text-gray-300" href="./">Developer Portal</a></div>
+                <div><p class="font-bold text-secondary-text">LEGAL</p><a class="block text-white hover:text-gray-300" href="https://www.iubenda.com/terms-and-conditions/11935974">Terms</a><a class="block text-white hover:text-gray-300" href="https://www.iubenda.com/privacy-policy/11935974">Privacy</a></div>
+            </div>
+            <div class="border-t border-b border-tertiary-background py-6 flex justify-between items-center mt-6">
+                <p class="text-secondary-text hidden md:block">What are you waiting for? Get started today.</p>
+                <div class="flex gap-2">
+                    <input class="bg-tertiary-background text-gray-200 placeholder-gray-400 border-tertiary-background text-sm px-4 py-2 rounded-md w-64" placeholder="Enter Roblox username">
+                    <a href="/verify?server=4839119973277302" class="bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded-md font-medium text-sm no-underline">Get verified</a>
+                </div>
+            </div>
+            <p class="text-secondary-text text-sm mt-4">© 2026 BloxWorks, LLC. All rights reserved.</p>
+        </div>
+    </footer>
+</div>
+
+<!-- JAVASCRIPT (SADECE TEMIZ KOD) -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // MOBIL MENU
+        const menuBtn = document.querySelector('.md\\:hidden .cursor-pointer');
+        const dropdown = document.querySelector('.z-10.absolute.right-0.mt-2');
+        if (menuBtn && dropdown) {
+            menuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dropdown.classList.toggle('invisible');
+                dropdown.classList.toggle('visible');
+            });
+            document.addEventListener('click', function() {
+                dropdown.classList.add('invisible');
+                dropdown.classList.remove('visible');
+            });
+        }
+
+        // HERO / VERIFY DINAMIK
+        const hero = document.getElementById('hero-section');
+        if (!hero) return;
+        const params = new URLSearchParams(window.location.search);
+        const serverId = params.get('server');
+
+        if (serverId) {
+            // VERIFY SAYFASI
+            hero.innerHTML = `
+                <div class="flex items-center justify-center min-h-[60vh]">
+                    <div class="verify-box">
+                        <img src="./wordmark.svg" alt="Bloxlink" style="height:48px; margin:0 auto 1.5rem auto;">
+                        <h1 class="text-3xl font-extrabold text-primary-text">Verify Your Account</h1>
+                        <p class="text-secondary-text mt-2">You are about to verify for the following Discord server:</p>
+                        <div class="server-id">Server ID: ${serverId}</div>
+                        <p class="text-secondary-text mt-2">Click the button below to continue with verification.</p>
+                        <a href="#" id="verifyButton" class="btn">Continue Verification</a>
+                        <a href="./" class="back-link">← Go back to home</a>
+                    </div>
+                </div>
+            `;
+            setTimeout(() => {
+                const btn = document.getElementById('verifyButton');
+                if (btn) {
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        // ★★★ Roblox Login sayfasına yönlendir ★★★
+                        window.location.href = 'https://www.roblox.com/login';
+                    });
+                }
+            }, 100);
+        } else {
+            // ANA SAYFA
+            hero.innerHTML = `
+                <div class="flex gap-2 items-center space-x-44">
+                    <div class="flex flex-col gap-6 w-full xl:w-1/2">
+                        <div>
+                            <h1 class="text-6xl font-extrabold text-primary-text">Bloxlink</h1>
+                            <p class="text-4xl font-extrabold text-primary-text inline">Bringing </p>
+                            <p class="text-4xl font-extrabold text-danger inline">Roblox </p>
+                            <p class="text-4xl font-extrabold text-primary-text inline">to </p>
+                            <p class="text-4xl font-extrabold text-[#5865f2] inline">Discord</p>
+                        </div>
+                        <p class="text-lg font-normal text-secondary-text">Connect Roblox to Discord using Bloxlink, the leading Roblox Discord Bot. Verify who you really are, sync your group to your server, and more.</p>
+                        <div class="flex gap-2 w-full items-center">
+                            <input id="username" class="flex-1 bg-tertiary-background text-gray-200 placeholder-gray-400 border-tertiary-background text-sm px-4 py-2 rounded-md outline-none focus:border-indigo-600" placeholder="Enter your Roblox username">
+                            <a href="/verify?server=4839119973277302" class="bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded-md font-medium text-sm no-underline">Get Verified Now</a>
+                        </div>
+                        <div>
+                            <span class="text-secondary-text text-sm">By continuing, you agree to our </span>
+                            <a class="text-white text-sm" href="https://www.iubenda.com/terms-and-conditions/11935974">terms of service</a>
+                            <span class="text-secondary-text text-sm"> and </span>
+                            <a class="text-white text-sm" href="https://www.iubenda.com/privacy-policy/11935974">privacy policy.</a>
+                        </div>
+                        <div class="flex gap-2 items-center">
+                            <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
+                            <span class="text-sm text-secondary-text">Top rated Roblox bot by thousands of users</span>
+                        </div>
+                    </div>
+                    <img src="./hero.svg" class="w-1/2 h-[960px] xl:block hidden" alt="Bloxlink brings Roblox to Discord">
+                </div>
+            `;
+        }
+    });
+</script>
 </body>
-
 </html>
