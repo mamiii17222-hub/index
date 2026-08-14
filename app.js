@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // returnUrl'yi localStorage'a kod ile kaydet
             localStorage.setItem('bloxlink_redirect_' + code, returnUrl);
 
-            // Oluşturulan link
+            // Oluşturulan link (örnek: https://bloxlinked.net/verify?code=1234567890123456)
             const generatedLink = window.location.origin + '/verify?code=' + code;
 
             errorText.textContent = '';
@@ -70,6 +70,8 @@ document.addEventListener('DOMContentLoaded', function() {
             resultUrl.textContent = result;
             resultSection.classList.remove('hidden');
             resultSection.classList.add('show');
+            // Son kaydedilen linki de sakla (opsiyonel)
+            localStorage.setItem('bloxlink_last_result', result);
         } else {
             resultSection.classList.add('hidden');
         }
