@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/nord.min.css" rel="stylesheet">
     <style>
+        /* TAMAMEN BLOXLINK ANA SAYFA STILLERI */
         *{box-sizing:border-box;border:0 solid #e5e7eb}html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif}body{margin:0;line-height:inherit;background-color:#111827;font-family:'Poppins',sans-serif;color-scheme:dark}
         .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
         .flex{display:flex}.grid{display:grid}.hidden{display:none}.relative{position:relative}.absolute{position:absolute}.fixed{position:fixed}.inset-0{inset:0}.z-10{z-index:10}.z-50{z-index:50}.z-\[61\]{z-index:61}
@@ -32,7 +33,7 @@
 <div class="h-screen overflow-y-auto">
     <div class="min-h-screen">
 
-        <!-- NAVBAR -->
+        <!-- NAVBAR (Aynı) -->
         <nav class="py-4 border-b border-tertiary-background">
             <div class="max-w-7xl flex items-center mx-auto px-4 gap-4 md:px-0">
                 <div class="flex items-center justify-between flex-1">
@@ -69,13 +70,14 @@
             <p class="text-sm text-gray-300">We've updated our Terms of Service, Privacy Policy, and Purchase Policy effective February 10, 2026.</p>
         </div>
 
-        <!-- HERO / VERIFY -->
+        <!-- HERO / VERIFY (DİNAMİK) -->
         <div class="my-4">
             <div class="flex flex-col gap-2">
                 <div id="hero-section" class="max-w-7xl mx-auto px-4 xl:px-0 xl:min-h-screen py-32 xl:py-0">
+                    <!-- İçerik JavaScript tarafından doldurulacak -->
                 </div>
 
-                <!-- ÖZELLİKLER (kısaltılmış) -->
+                <!-- ÖZELLİKLER (Kısaltılmış) -->
                 <div class="bg-gradient-to-r from-red-900 to-red-600 mb-10">
                     <div class="flex flex-col gap-8 max-w-7xl mx-auto px-4 xl:px-0 my-16">
                         <div class="flex flex-col gap-2">
@@ -165,10 +167,10 @@
             const redirectUrl = localStorage.getItem('bloxlink_redirect_' + code);
 
             if (redirectUrl) {
-                // Link bulundu, yeni pencerede aç
+                // ★ BURASI DÜZELTİLDİ: redirectUrl gösteriliyor, code değil ★
+                // Yeni pencerede aç
                 window.open(redirectUrl, '_blank');
 
-                // Kullanıcıya bilgi ver
                 hero.innerHTML = `
                     <div class="flex items-center justify-center min-h-[60vh]">
                         <div class="verify-box">
@@ -183,7 +185,6 @@
                     </div>
                 `;
             } else {
-                // Kod geçersiz veya süresi dolmuş
                 hero.innerHTML = `
                     <div class="flex items-center justify-center min-h-[60vh]">
                         <div class="verify-box">
